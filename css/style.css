@@ -119,3 +119,67 @@ footer {
     height: 16px;
     cursor: pointer;
 }
+
+
+/* Legenda do mapa */
+.map-legend {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-bottom: 15px;
+    padding: 12px 15px;
+    background-color: #f8faf8;
+    border: 1px solid #e5ece7;
+    border-radius: 8px;
+}
+
+.legend-title {
+    font-weight: bold;
+    color: #17633f;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.9rem;
+    color: #45584c;
+}
+
+.legend-color {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.legend-color.solar {
+    background-color: #e9ad27;
+}
+
+.legend-color.eolica {
+    background-color: #21865a;
+}
+
+/* Marcadores personalizados */
+.custom-marker {
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    font-weight: bold;
+    border: 3px solid white;
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3);
+}
+
+.custom-marker.solar {
+    background-color: #f4c542;
+    color: #654900;
+}
+
+.custom-marker.eolica {
+    background-color: #21865a;
+    color: white;
+}

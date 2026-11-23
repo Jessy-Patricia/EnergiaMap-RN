@@ -33,6 +33,23 @@ const pontosDemonstrativos = [
     }
 ];
 
+// Cria ícones personalizados para cada categoria
+function criarIcone(tipo) {
+
+    const ehSolar = tipo === 'Energia Solar';
+
+    const classe = ehSolar ? 'solar' : 'eolica';
+    const simbolo = ehSolar ? '☀' : '✦';
+
+    return L.divIcon({
+        className: '',
+        html: `<div class="custom-marker ${classe}">${simbolo}</div>`,
+        iconSize: [34, 34],
+        iconAnchor: [17, 17],
+        popupAnchor: [0, -17]
+    });
+}
+
 // Camada responsável pelos marcadores
 const camadaMarcadores = L.layerGroup().addTo(mapa);
 
@@ -56,7 +73,9 @@ function atualizarMarcadores() {
         // Verifica se a categoria está selecionada
         if (categoriasSelecionadas.includes(ponto.tipo)) {
 
-            const marcador = L.marker(ponto.coordenadas);
+            const marcador = L.marker(ponto.coordenadas, {
+    icon: criarIcone(ponto.tipo)
+});
 
             marcador.bindPopup(`
                 <h3>${ponto.nome}</h3>
