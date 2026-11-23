@@ -26,11 +26,35 @@
     <main>
         <section class="map-section">
             <div class="section-heading">
-                <h2>Mapa de Energias Renováveis</h2>
-                <p>Visualize os pontos de referência no território potiguar.</p>
-            </div>
+    <h2>Mapa de Energias Renováveis</h2>
+    <p>Visualize os pontos de referência no território potiguar.</p>
+</div>
 
-            <div id="map"></div>
+<div class="filters">
+    <h3>Filtrar por tipo de energia:</h3>
+
+    <label>
+        <input
+            type="checkbox"
+            class="filtro-energia"
+            value="Energia Solar"
+            checked
+        >
+        Energia Solar
+    </label>
+
+    <label>
+        <input
+            type="checkbox"
+            class="filtro-energia"
+            value="Energia Eólica"
+            checked
+        >
+        Energia Eólica
+    </label>
+</div>
+
+<div id="map"></div>
         </section>
     </main>
 

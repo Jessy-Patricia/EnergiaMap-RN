@@ -1,5 +1,5 @@
 
-// Coordenadas aproximadas do centro do Rio Grande do Norte
+ // Coordenadas aproximadas do centro do Rio Grande do Norte
 const coordenadasRN = [-5.812, -36.592];
 
 // Criação do mapa
@@ -33,18 +33,47 @@ const pontosDemonstrativos = [
     }
 ];
 
-// Adiciona os marcadores ao mapa
-pontosDemonstrativos.forEach(ponto => {
+// Camada responsável pelos marcadores
+const camadaMarcadores = L.layerGroup().addTo(mapa);
 
-    const marcador = L.marker(ponto.coordenadas);
+// Seleciona os filtros do HTML
+const filtros = document.querySelectorAll('.filtro-energia');
 
-    marcador.addTo(mapa);
+// Função para atualizar os marcadores
+function atualizarMarcadores() {
 
-    marcador.bindPopup(`
-        <h3>${ponto.nome}</h3>
-        <p><strong>Categoria:</strong> ${ponto.tipo}</p>
-        <p>${ponto.descricao}</p>
-        <small>Localização ilustrativa — não representa uma instalação real.</small>
-    `);
+    // Remove os marcadores exibidos anteriormente
+    camadaMarcadores.clearLayers();
 
+    // Identifica as categorias selecionadas
+    const categoriasSelecionadas = Array.from(filtros)
+        .filter(filtro => filtro.checked)
+        .map(filtro => filtro.value);
+
+    // Percorre os pontos demonstrativos
+    pontosDemonstrativos.forEach(ponto => {
+
+        // Verifica se a categoria está selecionada
+        if (categoriasSelecionadas.includes(ponto.tipo)) {
+
+            const marcador = L.marker(ponto.coordenadas);
+
+            marcador.bindPopup(`
+                <h3>${ponto.nome}</h3>
+                <p><strong>Categoria:</strong> ${ponto.tipo}</p>
+                <p>${ponto.descricao}</p>
+                <small>Localização ilustrativa — não representa uma instalação real.</small>
+            `);
+
+            marcador.addTo(camadaMarcadores);
+        }
+    });
+}
+
+// Detecta alterações nos filtros
+filtros.forEach(filtro => {
+    filtro.addEventListener('change', atualizarMarcadores);
 });
+
+// Exibe os marcadores iniciais
+atualizarMarcadores();
