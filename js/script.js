@@ -141,3 +141,12 @@ filtros.forEach(filtro => {
 // Exibe os marcadores iniciais
 atualizarMarcadores();
 
+// Ajusta o mapa para enquadrar todas as cidades
+const coordenadasPontos = pontosDemonstrativos.map(
+    ponto => ponto.coordenadas
+);
+
+mapa.fitBounds(coordenadasPontos, {
+    padding: [35, 35],
+    maxZoom: 8
+});
