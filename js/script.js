@@ -100,7 +100,7 @@ const camadaMarcadores = L.layerGroup().addTo(mapa);
 // Seleciona os filtros do HTML
 const filtros = document.querySelectorAll('.filtro-energia');
 
-// Função para atualizar os marcadores
+//* Função para atualizar os marcadores */
 function atualizarMarcadores() {
 
     // Remove os marcadores exibidos anteriormente
@@ -111,6 +111,9 @@ function atualizarMarcadores() {
         .filter(filtro => filtro.checked)
         .map(filtro => filtro.value);
 
+    // Atualiza os indicadores do painel
+    atualizarIndicadores(categoriasSelecionadas);
+
     // Percorre os pontos demonstrativos
     pontosDemonstrativos.forEach(ponto => {
 
@@ -118,8 +121,8 @@ function atualizarMarcadores() {
         if (categoriasSelecionadas.includes(ponto.tipo)) {
 
             const marcador = L.marker(ponto.coordenadas, {
-    icon: criarIcone(ponto.tipo)
-});
+                icon: criarIcone(ponto.tipo)
+            });
 
             marcador.bindPopup(`
                 <h3>${ponto.nome}</h3>
@@ -132,6 +135,30 @@ function atualizarMarcadores() {
         }
     });
 }
+
+/* Atualiza os indicadores do painel */
+function atualizarIndicadores(categoriasSelecionadas) {
+
+    const totalPontos = pontosDemonstrativos.length;
+
+    const totalSolar = pontosDemonstrativos.filter(
+        ponto => ponto.tipo === 'Energia Solar'
+    ).length;
+
+    const totalEolica = pontosDemonstrativos.filter(
+        ponto => ponto.tipo === 'Energia Eólica'
+    ).length;
+
+    const pontosVisiveis = pontosDemonstrativos.filter(
+        ponto => categoriasSelecionadas.includes(ponto.tipo)
+    ).length;
+
+    document.getElementById('total-pontos').textContent = totalPontos;
+    document.getElementById('total-solar').textContent = totalSolar;
+    document.getElementById('total-eolica').textContent = totalEolica;
+    document.getElementById('pontos-visiveis').textContent = pontosVisiveis;
+}
+
 
 // Detecta alterações nos filtros
 filtros.forEach(filtro => {
