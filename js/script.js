@@ -30,7 +30,51 @@ const pontosDemonstrativos = [
         coordenadas: [-5.5375, -35.8197],
         tipo: 'Energia Eólica',
         descricao: 'Exemplo demonstrativo de referência em energia eólica.'
+    },
+
+    {
+        nome: 'Caicó',
+        coordenadas: [-6.4581, -37.0970],
+        tipo: 'Energia Solar',
+        descricao: 'Exemplo demonstrativo de referência em energia solar.'
+    },
+    {
+        nome: 'Currais Novos',
+        coordenadas: [-6.2608, -36.5178],
+        tipo: 'Energia Solar',
+        descricao: 'Exemplo demonstrativo de referência em energia solar.'
+    },
+    {
+        nome: 'Assú',
+        coordenadas: [-5.5773, -36.9084],
+        tipo: 'Energia Eólica',
+        descricao: 'Exemplo demonstrativo de referência em energia eólica.'
+    },
+    {
+        nome: 'Apodi',
+        coordenadas: [-5.6535, -37.7946],
+        tipo: 'Energia Solar',
+        descricao: 'Exemplo demonstrativo de referência em energia solar.'
+    },
+    {
+        nome: 'Pau dos Ferros',
+        coordenadas: [-6.1050, -38.2077],
+        tipo: 'Energia Eólica',
+        descricao: 'Exemplo demonstrativo de referência em energia eólica.'
+    },
+    {
+        nome: 'Macau',
+        coordenadas: [-5.1150, -36.6344],
+        tipo: 'Energia Eólica',
+        descricao: 'Exemplo demonstrativo de referência em energia eólica.'
+    },
+    {
+        nome: 'Santa Cruz',
+        coordenadas: [-6.2240, -36.0030],
+        tipo: 'Energia Solar',
+        descricao: 'Exemplo demonstrativo de referência em energia solar.'
     }
+
 ];
 
 // Cria ícones personalizados para cada categoria
@@ -96,3 +140,4 @@ filtros.forEach(filtro => {
 
 // Exibe os marcadores iniciais
 atualizarMarcadores();
+
